@@ -215,7 +215,7 @@ int main() {
 
 
   draw_lines(m3, s, c);
-  //display(s);
+  display(s);
   save_extension(s, "lines.png");
   save_ppm(s, "binary.ppm");
   save_ppm_ascii(s, "ascii.ppm");
