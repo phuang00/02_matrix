@@ -69,11 +69,7 @@ void matrix_mult(struct matrix *a, struct matrix *b) {
     for (j = 0; j < b->lastcol; j++){
       double sum = 0;
       int x;
-      int min = a->lastcol;
-      if (b->rows < a->lastcol) {
-        min = b-> rows;
-      }
-      for (x = 0; x < min; x++){
+      for (x = 0; x < b->rows; x++){
         sum += (a->m[i][x] * bcopy->m[x][j]);
       }
       b->m[i][j] = sum;

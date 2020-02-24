@@ -10,8 +10,8 @@ Creates the point structure in order to represent a pixel as a color triple
 #ifndef ML6_H
 #define ML6_H
 
-#define XRES 500
-#define YRES 500
+#define XRES 550
+#define YRES 550
 #define MAX_COLOR 255
 #define DEFAULT_COLOR 0
 
