@@ -17,7 +17,7 @@ if points is full, should call grow on points
 ====================*/
 void add_point( struct matrix * points, double x, double y, double z) {
 	int col = points->lastcol;
-	if (col == points->cols){
+	if (col >= points->cols){
 		grow_matrix(points, points->cols * 2);
 	}
 	points->m[0][col] = x;

@@ -29,7 +29,6 @@ void print_matrix(struct matrix *m) {
       if (j == m->lastcol - 1){
         printf("\n");
       }
-      printf("%d %d\n", i, j);
     }
   }
 }
@@ -40,6 +39,18 @@ Inputs:  struct matrix *m <-- assumes m is a square matrix
 turns m in to an identity matrix
 */
 void ident(struct matrix *m) {
+  int i, j;
+  for (i = 0; i < m->rows; i++){
+    for (j = 0; j < m->cols; j++){
+      if (i == j){
+        m->m[i][j] = 1.00;
+      }
+      else {
+        m->m[i][j] = 0.00;
+      }
+    }
+  }
+  m->lastcol = m->cols;
 }
 
 
@@ -51,6 +62,23 @@ multiply a by b, modifying b to be the product
 a*b -> b
 */
 void matrix_mult(struct matrix *a, struct matrix *b) {
+  struct matrix *bcopy = new_matrix(b->rows, b->cols);
+  copy_matrix(b, bcopy);
+  int i, j;
+  for (i = 0; i < a->rows; i++){
+    for (j = 0; j < b->lastcol; j++){
+      double sum = 0;
+      int x;
+      int min = a->lastcol;
+      if (b->rows < a->lastcol) {
+        min = b-> rows;
+      }
+      for (x = 0; x < min; x++){
+        sum += (a->m[i][x] * bcopy->m[x][j]);
+      }
+      b->m[i][j] = sum;
+    }
+  }
 }
 
 
